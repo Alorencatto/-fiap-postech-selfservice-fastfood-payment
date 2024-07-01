@@ -9,6 +9,7 @@ from src.common.utils.singleton import Singleton
 
 class Config(metaclass=Singleton):
     DATABASE_URL = config("DATABASE_URL", cast=str)
+    MONGODB_URI = config("MONGODB_URI", cast=str)
     LOG_LEVEL = config("LOG_LEVEL", default="INFO", cast=str)
     TITLE = "FastAPI Clean Architecture"
     VERSION: str = "0.1.0"
@@ -82,12 +83,14 @@ class AWSConfig:
             cls._instance = super().__new__(cls)
             cls._instance.access_key = os.getenv('AWS_ACCESS_KEY_ID')
             cls._instance.secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+            cls._instance.aws_session_token = os.getenv('AWS_SESSION_TOKEN')
             cls._instance.region = os.getenv('AWS_REGION')
         return cls._instance
 
     def __get_aws_session(self):
         return boto3.Session(aws_access_key_id=self.access_key,
                              aws_secret_access_key=self.secret_key,
+                             aws_session_token=self.aws_session_token,
                              region_name=self.region)
 
     @staticmethod

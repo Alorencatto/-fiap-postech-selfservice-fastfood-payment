@@ -10,7 +10,7 @@ services:
     env_file:
       - .env.template
     depends_on:
-      - postgres
+      - mongodb
     command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; uvicorn src.external.web.fastapi.app:app --host 0.0.0.0 --port 8000 --reload'
     networks:
       - app-network
@@ -23,25 +23,35 @@ services:
     env_file:
       - .env.template
     depends_on:
-      - postgres
+      - mongodb
     command: bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done; alembic -c migrations/alembic/alembic.ini upgrade head"
     networks:
       - app-network
 
-  postgres:
-    image: postgres:16.0-alpine
-    restart: unless-stopped
+#  postgres:
+#    image: postgres:16.0-alpine
+#    restart: unless-stopped
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - py_ports_adapters_postgres_data:/var/lib/postgresql/data
+#    env_file:
+#      - .env.template
+#    networks:
+#      - app-network
+
+  mongodb:
+    image: mongodb/mongodb-community-server:6.0-ubi8
     ports:
-      - "5432:5432"
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=pass
     volumes:
-      - py_ports_adapters_postgres_data:/var/lib/postgresql/data
-    env_file:
-      - .env.template
-    networks:
-      - app-network
+      - fiap_postech_selfservice_fastfood_payment_mongodb_data:/data/db
 
 volumes:
-  py_ports_adapters_postgres_data:
+  fiap_postech_selfservice_fastfood_payment_mongodb_data:
 
 networks:
   app-network:

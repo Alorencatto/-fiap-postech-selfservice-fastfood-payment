@@ -9,9 +9,12 @@ from src.common.dto.payment_dto import (
     WebhookDTO,
 )
 from src.communication.controller.payment import PaymentController
-from src.external.database.sqlalchemy.repositories.payment import (
-    PaymentRepository,
-)
+
+# Postgresql
+# from src.external.database.sqlalchemy.repositories.payment import PaymentRepository
+
+# MongoDB
+from src.external.database.mongo.repositories.payment import PaymentRepository
 
 payment_repository = PaymentRepository()
 payment_controller = PaymentController(payment_repository)

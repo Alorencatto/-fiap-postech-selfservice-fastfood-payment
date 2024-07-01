@@ -83,3 +83,6 @@ class ProductUseCase:
         product_id: int, product_gateway: ProductGatewayInterface
     ) -> bool:
         return product_gateway.delete(product_id)
+
+    def sum(self,a,b):
+        return a + b
