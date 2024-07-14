@@ -66,8 +66,8 @@ jobs:
           ECR_REPOSITORY: postech # TODO
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:fiap-postech-selfservice-fastfood-payment/$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:fiap-postech-selfservice-fastfood-payment/$IMAGE_TAG
           echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
 #      # Build docker image to docker registry
