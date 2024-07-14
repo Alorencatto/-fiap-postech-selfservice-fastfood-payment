@@ -121,7 +121,7 @@ class HTTPAPIAdapter:
         # TODO : Voltar a atualização do pedido
         # self.__payment_controller.update_order(payment.order_id)
 
-        KitchenHTTPClient.update_order_status(order_id=payment.order_id, payment_status=webhook_data.payment_status)
+        # KitchenHTTPClient.update_order_status(order_id=payment.order_id, payment_status=webhook_data.payment_status)
 
 
         return self.__payment_controller.update(
