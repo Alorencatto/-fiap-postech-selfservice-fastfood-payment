@@ -6,9 +6,9 @@ from src.core.domain.enum.payment import PaymentStatusEnum
 
 
 class PaymentEntity(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True,use_enum_values=True)
 
-    id: Union[int, None] = None
+    id: Union[str, None] = None
     qr_data: Union[str, None] = None
     order_id: int
     user_id: int

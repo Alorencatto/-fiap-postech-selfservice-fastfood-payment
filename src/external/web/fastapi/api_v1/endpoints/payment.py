@@ -22,22 +22,6 @@ payment_controller = PaymentController(payment_repository)
 router = APIRouter(prefix="/payments", tags=["payments"])
 
 
-@router.get("/user/{user_id}", response_model=List[PaymentDTO])
-async def get_many_payments_by_user_id(user_id: int):
-    payments = payment_controller.get_many_by_user_id(user_id=user_id)
-    return [
-        PaymentDTO(
-            id=payment.id,
-            user_id=payment.user_id,
-            order_id=payment.order_id,
-            amount=payment.amount,
-            provider=payment.provider,
-            qr_data=payment.qr_data,
-            status=payment.status,
-        )
-        for payment in payments
-    ]
-
 
 @router.get("/{payment_id}", response_model=PaymentDTO)
 async def get_payment_by_id(payment_id: int):

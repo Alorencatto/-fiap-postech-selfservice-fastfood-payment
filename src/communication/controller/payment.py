@@ -9,13 +9,7 @@ class PaymentController:
     def __init__(self, payment_repository: PaymentRepositoryInterface):
         self.payment_repository = payment_repository
 
-    def get_many_by_user_id(self, user_id: int):
-        payment_gateway = PaymentGateway(self.payment_repository)
-        return PaymentUseCase.get_many_by_user_id(
-            user_id=user_id, payment_gateway=payment_gateway
-        )
-
-    def get_by_id(self, payment_id: int):
+    def get_by_id(self, payment_id: str):
         payment_gateway = PaymentGateway(self.payment_repository)
         return PaymentUseCase.get_by_id(
             payment_id=payment_id, payment_gateway=payment_gateway
@@ -33,7 +27,7 @@ class PaymentController:
             payment=payment, payment_gateway=payment_gateway
         )
 
-    def update(self, payment_id, updated_payment: UpdatePaymentDTO):
+    def update(self, payment_id: str, updated_payment: UpdatePaymentDTO):
         payment_gateway = PaymentGateway(self.payment_repository)
         payment = PaymentEntity(id=payment_id, **updated_payment.model_dump())
         return PaymentUseCase.update(
@@ -41,7 +35,7 @@ class PaymentController:
             payment_gateway=payment_gateway,
         )
 
-    def delete(self, payment_id: int):
+    def delete(self, payment_id: str):
         payment_gateway = PaymentGateway(self.payment_repository)
         return PaymentUseCase.delete(
             payment_id=payment_id, payment_gateway=payment_gateway

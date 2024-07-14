@@ -5,12 +5,9 @@ from src.core.domain.entities.payment import PaymentEntity
 
 
 class PaymentGatewayInterface(metaclass=abc.ABCMeta):
-    @abc.abstractmethod
-    def get_many_by_user_id(self, user_id: int) -> List[PaymentEntity]:
-        raise NotImplementedError()
 
     @abc.abstractmethod
-    def get_by_id(self, payment_id: int) -> PaymentEntity:
+    def get_by_id(self, payment_id: str) -> PaymentEntity:
         raise NotImplementedError()
 
     @abc.abstractmethod
@@ -22,7 +19,7 @@ class PaymentGatewayInterface(metaclass=abc.ABCMeta):
         raise NotImplementedError()
 
     @abc.abstractmethod
-    def delete(self, payment_id: int) -> bool:
+    def delete(self, payment_id: str) -> bool:
         raise NotImplementedError()
 
     @abc.abstractmethod

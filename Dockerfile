@@ -53,7 +53,7 @@ ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 WORKDIR /app
 
 COPY ./src /app/src
-COPY ./migrations /app/migrations
+#COPY ./migrations /app/migrations
 
 # chown all the files to the app user
 RUN chown -R app:app /app/

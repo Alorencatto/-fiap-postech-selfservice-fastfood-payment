@@ -1,23 +1,28 @@
 import unittest
 
-from pydantic import ValidationError
+import pydantic_core
 
-from src.core.domain.entities.product import ProductEntity
+from src.core.domain.entities.payment import PaymentEntity
+# from domain.entities.payment import PaymentEntity
 
-class TestProduct(unittest.TestCase):
 
-    def testShouldReturnProductWithSucess(self):
-        product = ProductEntity(
-            name="test product",
-            category="test category"
-        )
-        
-        self.assertEqual(product.name,"test product")
+class TestPayment(unittest.TestCase):
 
-    def testShouldRaiseExceptionOnProductCreationWhithoutCategory(self):
-        with self.assertRaises(ValidationError):
-
-            product = ProductEntity(
-                name="test product"
+    def testShouldCheckInvalidPaymentEnum(self):
+        with self.assertRaises(pydantic_core._pydantic_core.ValidationError):
+            PaymentEntity(
+                order_id=1,
+                user_id=1,
+                amount=0.99,
+                provider="visa",
+                status="CAPTUREDE"
             )
-            self.assertEqual(product.name, "test product")
+
+    def testShouldCheckValidPaymentEnum(self):
+        PaymentEntity(
+            order_id=1,
+            user_id=1,
+            amount=0.99,
+            provider="visa",
+            status="CAPTURED"
+        )

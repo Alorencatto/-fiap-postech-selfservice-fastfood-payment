@@ -9,10 +9,7 @@ class PaymentGateway(PaymentGatewayInterface):
     def __init__(self, payment_repository: PaymentRepositoryInterface) -> None:
         self.payment_repository = payment_repository
 
-    def get_many_by_user_id(self, user_id: int) -> List[PaymentEntity]:
-        return self.payment_repository.get_many_by_user_id(user_id=user_id)
-
-    def get_by_id(self, payment_id: int) -> PaymentEntity:
+    def get_by_id(self, payment_id: str) -> PaymentEntity:
         return self.payment_repository.get_by_id(payment_id=payment_id)
 
     def get_by_order_id(self, order_id: int) -> PaymentEntity:
@@ -24,5 +21,5 @@ class PaymentGateway(PaymentGatewayInterface):
     def update(self, payment: PaymentEntity) -> PaymentEntity:
         return self.payment_repository.update(payment=payment)
 
-    def delete(self, payment_id: int) -> None:
+    def delete(self, payment_id: str) -> None:
         return self.payment_repository.delete(payment_id=payment_id)

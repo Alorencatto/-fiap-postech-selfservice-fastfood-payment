@@ -52,7 +52,7 @@ class UpdatePaymentDTO(BaseModel):
 
 
 class PaymentDTO(BaseModel):
-    id: int
+    id: str
     order_id: Union[int, None] = None
     user_id: Union[int, None] = None
     qr_data: Union[str, None] = None

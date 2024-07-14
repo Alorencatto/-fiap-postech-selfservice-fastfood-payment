@@ -9,7 +9,7 @@ class PaymentDetailsMapper:
     @staticmethod
     def model_to_entity(payment_model: PaymentDetailsModel) -> PaymentEntity:
         return PaymentEntity(
-            id=cast(int, payment_model.id),
+            # id=cast(int, payment_model.id),
             order_id=cast(int, payment_model.order_id),
             user_id=cast(int, payment_model.user_id),
             amount=cast(float, payment_model.amount),

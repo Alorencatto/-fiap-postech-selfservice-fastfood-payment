@@ -10,7 +10,7 @@ class PaymentRepositoryInterface(metaclass=abc.ABCMeta):
         raise NotImplementedError()
 
     @abc.abstractmethod
-    def get_by_id(self, payment_id: int) -> PaymentEntity:
+    def get_by_id(self, payment_id: str) -> PaymentEntity:
         raise NotImplementedError()
 
     @abc.abstractmethod

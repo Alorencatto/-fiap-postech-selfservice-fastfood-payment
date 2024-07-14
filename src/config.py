@@ -9,6 +9,7 @@ from src.common.utils.singleton import Singleton
 
 class Config(metaclass=Singleton):
     DATABASE_URL = config("DATABASE_URL", cast=str)
+    MONGO_DATABASE = "payment"
     MONGODB_URI = config("MONGODB_URI", cast=str)
     LOG_LEVEL = config("LOG_LEVEL", default="INFO", cast=str)
     TITLE = "FastAPI Clean Architecture"
