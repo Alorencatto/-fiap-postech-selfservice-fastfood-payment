@@ -9,10 +9,14 @@ class KitchenHTTPClient:
     def __int__(
             self
     ):
-        self.url = os.getenv("ORDER_SERVICE_URL")
+        pass
+
 
     @staticmethod
-    def update_order_status(self, order_id: int, payment_status: str):
+    def update_order_status(order_id: int, payment_status: str):
+        url = str(os.getenv("ORDER_SERVICE_URL"))
+
+        url : str = "" #TODO
 
         payload : dict = {
             order_id : order_id,
@@ -20,7 +24,7 @@ class KitchenHTTPClient:
         }
 
         response = httpx.put(
-            url=self.url,
+            url=url,
             json=payload,
             timeout=30
         )
