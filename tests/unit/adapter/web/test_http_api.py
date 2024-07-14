@@ -64,7 +64,7 @@ class TestHTTPAPIAdapter(TestCase):
         self.payment_controller = Mock(spec=PaymentController)
         self.httpAdapter = HTTPAPIAdapter(payment_controller=self.payment_controller)
 
-    # Create / Update
+    # --- Create / Update
 
     def testShouldRaiseExceptionOnPaymentCreation(self):
         # Act
@@ -90,7 +90,7 @@ class TestHTTPAPIAdapter(TestCase):
         # Assert
         self.assertEqual(response, self.mock_payment_DTO)
 
-    # Delete
+    # --- Delete
 
     def testShouldRaiseExceptionOnPaymentDelete(self):
         # Act
@@ -119,8 +119,7 @@ class TestHTTPAPIAdapter(TestCase):
         # Assert
         self.assertEqual(response,self.mock_payment_DTO)
 
-
-    # Get
+    # --- Get
 
     def testShouldGetPaymentByIdWithSuccess(self):
         # Act
