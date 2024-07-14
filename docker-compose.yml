@@ -9,8 +9,8 @@ services:
       - ./:/app
       - ./migrations:/app/migrations
     env_file:
-#      - .env.template
-      - .env
+#      - .env.dev.template
+      - .env.dev
     depends_on:
       - mongodb
 #    command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; uvicorn src.external.web.fastapi.app:app --host 0.0.0.0 --port 8000 --reload'
@@ -24,7 +24,7 @@ services:
 #      - ./migrations:/app/migrations
 #      - ./src:/app/src
 #    env_file:
-#      - .env.template
+#      - .env.dev.template
 #    depends_on:
 #      - mongodb
 #    command: bash -c "while !</dev/tcp/postgres/5432; do sleep 1; done; alembic -c migrations/alembic/alembic.ini upgrade head"
@@ -39,7 +39,7 @@ services:
 #    volumes:
 #      - py_ports_adapters_postgres_data:/var/lib/postgresql/data
 #    env_file:
-#      - .env.template
+#      - .env.dev.template
 #    networks:
 #      - app-network
 
