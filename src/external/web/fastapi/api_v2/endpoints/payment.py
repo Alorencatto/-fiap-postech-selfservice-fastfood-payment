@@ -9,7 +9,6 @@ from src.common.dto.payment_dto import (
     WebhookDTO,
 )
 from src.communication.controller.payment import PaymentController
-from src.external.web.http.kitchen_client import KitchenHTTPClient
 
 # Postgresql
 # from src.external.database.sqlalchemy.repositories.payment import PaymentRepository
@@ -116,13 +115,6 @@ class HTTPAPIAdapter:
             provider=payment.provider,
             status=webhook_data.payment_status,
         )
-        
-        # TODO : Saga? Todos na mesma transação?
-        # TODO : Voltar a atualização do pedido
-        # self.__payment_controller.update_order(payment.order_id)
-
-        # KitchenHTTPClient.update_order_status(order_id=payment.order_id, payment_status=webhook_data.payment_status)
-
 
         return self.__payment_controller.update(
             payment_id=payment.id, updated_payment=updated_payment
