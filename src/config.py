@@ -8,9 +8,9 @@ from src.common.utils.singleton import Singleton
 
 
 class Config(metaclass=Singleton):
-    DATABASE_URL = config("DATABASE_URL", cast=str)
+    DATABASE_URL = config("DATABASE_URL", default="postgresql://postgres:postgres@localhost:5432/postgres",cast=str)
     MONGO_DATABASE = "payment"
-    MONGODB_URI = config("MONGODB_URI", cast=str)
+    MONGODB_URI = config("MONGODB_URI", default="MONGODB_URI=mongodb://user:pass@localhost:27017",cast=str)
     LOG_LEVEL = config("LOG_LEVEL", default="INFO", cast=str)
     TITLE = "FastAPI Clean Architecture"
     VERSION: str = "0.1.0"
