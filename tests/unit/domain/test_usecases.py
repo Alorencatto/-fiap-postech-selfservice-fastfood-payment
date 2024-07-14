@@ -13,7 +13,7 @@ class TestPaymentUseCase(TestCase):
     def setUp(self) -> None:
 
         self.payment_id: str = "d41d5943-2877-48b1-ab44-8475b438a07b"
-        self.order_id: int = 1
+        self.order_id: int = 2
         self.user_id: int = 1
         self.qr_data: str = "mock qr_data"
         self.provider = "Stripe"

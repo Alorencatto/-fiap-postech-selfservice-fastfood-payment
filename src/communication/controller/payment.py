@@ -40,3 +40,4 @@ class PaymentController:
         return PaymentUseCase.delete(
             payment_id=payment_id, payment_gateway=payment_gateway
         )
+

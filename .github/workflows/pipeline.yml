@@ -34,10 +34,20 @@ jobs:
         run: |  
           coverage report -m
 
-      # TODO
+      # Integrate with Sonarcube
+
+      - name: SonarCloud
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+            with:
+              fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          - name: SonarCloud Scan
+            uses: SonarSource/sonarcloud-github-action@master
+            env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       # Build docker image
-
-
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
@@ -59,3 +69,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      # Update Service on Production
