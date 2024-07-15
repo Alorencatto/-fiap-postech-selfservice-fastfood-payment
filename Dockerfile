@@ -59,3 +59,6 @@ COPY ./src /app/src
 RUN chown -R app:app /app/
 
 USER app
+
+##
+CMD ["uvicorn", "src.external.web.fastapi.app:app", "--host", "0.0.0.0", "--port", "8000"]
