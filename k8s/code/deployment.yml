@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fiap-postech-selfservice-fastfood
+  name: fiap-postech-selfservice-fastfood-payment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fiap-postech-selfservice-fastfood
+      app: fiap-postech-selfservice-fastfood-payment
   template:
     metadata:
       labels:
-        app: fiap-postech-selfservice-fastfood
+        app: fiap-postech-selfservice-fastfood-payment
     spec:
       containers:
-      - name: fiap-postech-selfservice-fastfood
-        image: alorencatto/fiap-postech-selfservice-fastfood:0.2.0
+      - name: fiap-postech-selfservice-fastfood-payment
+        image: alorencatto/fiap-postech-selfservice-fastfood-payment
         command: ["uvicorn","src.external.web.fastapi.app:app","--host","0.0.0.0","--port","8000","--reload"]
         ports:
         - containerPort: 8000
