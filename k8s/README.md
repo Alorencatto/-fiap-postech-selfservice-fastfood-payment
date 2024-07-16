@@ -36,8 +36,8 @@ kubectl top node
 
 ## Building image
 ```shell
-docker build --platform=linux/amd64 -t alorencatto/fiap-postech-selfservice-fastfood:0.6.0 .
-docker push alorencatto/fiap-postech-selfservice-fastfood:0.6.0
+docker build --platform=linux/amd64 -t alorencatto/fiap-postech-selfservice-fastfood-payment .
+docker push alorencatto/fiap-postech-selfservice-fastfood-payment
 ```
 
 ## Applying manifests

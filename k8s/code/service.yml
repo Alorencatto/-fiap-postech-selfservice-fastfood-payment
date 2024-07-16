@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-fiap-postech-selfservice-fastfood
+  name: svc-fiap-postech-selfservice-fastfood-payment
 spec:
   selector:
-    app: fiap-postech-selfservice-fastfood
+    app: fiap-postech-selfservice-fastfood-payment
   ports:
     - protocol: TCP
       port: 8000
