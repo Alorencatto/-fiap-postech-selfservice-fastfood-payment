@@ -29,8 +29,6 @@ def given_a_payment_with_order_id(context):
 
         if r.status_code == 200:
             print("Payment created!")
-            payment_id : str = r.json().get("id")
-            # TODO Chamar função de recuperar pagamento por id
         elif r.status_code == 400:
             print("Payment already created")
             context.status = "PENDING"
