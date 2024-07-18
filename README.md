@@ -50,6 +50,9 @@ You can find the Kubernetes manifests at `k8s` directory.
 - `alembic -c migrations/alembic/alembic.ini revision --autogenerate -m"First commit"`
 - `alembic -c migrations/alembic/alembic.ini upgrade head`
 
+### Tests coverage
+![Test coverage](./docs/images/test-coverage.png)
+
 
 ## Contact
 Augusto Lorençatto - [lorencattoaugusto@gmail.com](mailto:lorencattoaugusto@gmail.com)
